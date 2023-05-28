@@ -96,7 +96,7 @@ public class Login_page implements ActionListener{
 				// below two lines are used for connectivity.
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/Collage",
+					"jdbc:mysql://localhost:3306/text_collage",
 					"root", "");
 
 				// Collage is database
@@ -105,7 +105,7 @@ public class Login_page implements ActionListener{
 				
 				
 				
-				String qury1="select*from "+user_name;
+				String qury1="select*from login_details_0f_collage";
 						    
 				PreparedStatement ps = Connection.prepareStatement(qury1); 
 				ResultSet rs = ps.executeQuery(); {
@@ -113,6 +113,7 @@ public class Login_page implements ActionListener{
 			        while (rs.next()) {
 			        	System.out.println("___________________________");
 			         sqlpassword =rs.getString("password");
+			         sqlunsername=rs.getString("username");
 			          if (sqlpassword!=pass_word) {
 			        	  go=true;
 					}
@@ -135,7 +136,7 @@ public class Login_page implements ActionListener{
 			}
 			
 			
-			if( pass_word.equals(sqlpassword)) {
+			if( pass_word.equals(sqlpassword)&& user_name.equals(sqlunsername)) {
 				jf.setVisible(false);
 				 
 				new Home_page();
@@ -143,12 +144,12 @@ public class Login_page implements ActionListener{
 				go=false;
 			}
 			else if (go==true){
-				alert.setText("Password incorrect");
+				alert.setText("Username or password is incorrect ");
 			}
 			System.out.println("-----------------------------");
 			System.out.println("Username:"+user_name);
 			System.out.println("Password:"+pass_word);
-			System.out.println("Passwordsql:"+sqlunsername);
+			System.out.println("Passwordsql:"+sqlpassword);
 		}
 		else if  (e.getSource()==newuser) {
 			System.out.println("newuser button pressed");

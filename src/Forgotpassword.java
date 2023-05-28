@@ -12,6 +12,7 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
 
 class forgot implements ActionListener {
 
@@ -116,13 +117,13 @@ class forgot implements ActionListener {
 
 					// below two lines are used for connectivity.
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Collage", "root", "");
+					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage", "root", "");
 
 					// Collage is database
 					// root is name of database
 					// "" is password of database
 
-					String qury1 = "select*from " + username;
+					String qury1 = "select*from login_details_0f_collage";
 
 					PreparedStatement ps = connection.prepareStatement(qury1);
 					ResultSet rs = ps.executeQuery();
@@ -130,11 +131,12 @@ class forgot implements ActionListener {
 
 						while (rs.next()) {
 							System.out.println("___________________________");
+							String sqlusername=rs.getString("username");
 							String sqlemailid = rs.getString("Email_id");
 							String sqlcollagecode = rs.getString("collage_code");
 
 							System.out.println("___________________________");
-							System.out.println("\nEmail: " + sqlemailid + "\nCollage code: " + sqlcollagecode);
+							System.out.println("Username : "+sqlusername+"\nEmail: " + sqlemailid + "\nCollage code: " + sqlcollagecode);
 							System.out.println("___________________________");
 							if (emailid.equals(sqlemailid) && collagecode.equals(sqlcollagecode)) {
 								password.setText("Enter new Password");
@@ -168,7 +170,7 @@ class forgot implements ActionListener {
 
 				// below two lines are used for connectivity.
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Collage", "root", "");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage", "root", "");
 
 				// Collage is database
 				// root is name of database
@@ -176,7 +178,7 @@ class forgot implements ActionListener {
 
 				if (Password.equals(Repassword)) {
 
-					String qury = "update " + username + " set password='" + Password + "' where Collage_code='"
+					String qury = "update login_details_0f_collage set password='" + Password + "' where Collage_code='"
 							+ collagecode + "'";
 					Statement stmt = connection.createStatement();
 					stmt.executeUpdate(qury);
@@ -189,11 +191,9 @@ class forgot implements ActionListener {
 				}
 			} catch (Exception e2) {
 				System.out.println(e2);
+				alert.setText("Please try again");
 				// TODO: handle exception
 			}
-			// if (done1==true) {
-
-			// }
 
 		}
 
