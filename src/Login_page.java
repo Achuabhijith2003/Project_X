@@ -38,7 +38,7 @@ public class Login_page implements ActionListener{
 		    user_name.setBounds(20, 10, 200, 20);
 		    jf.add(user_name);
 		    
-		    username=new TextField("");
+		    username=new TextField("text@2003");
 		    username.setBounds(20, 30, 200, 20);
 		    jf.add(username);
 		    
@@ -47,7 +47,7 @@ public class Login_page implements ActionListener{
 		    jf.add(Pass_word);
 		    
 		    
-		    password=new JPasswordField(15);
+		    password=new JPasswordField("text");
 		    password.setBounds(20, 70, 200, 20);
 		    jf.add(password);
 		    
