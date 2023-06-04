@@ -158,25 +158,25 @@ import javax.swing.JPasswordField;
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection = DriverManager.getConnection(
 								"jdbc:mysql://localhost:3306/text_collage",
-								"root", "");
+								"Project_x", "jayakumarreena");
 				      
 					
 					Statement stmt = Connection.createStatement();
 						
 					
-					String qury="INSERT INTO login_details_0f_collage (username,password,Email_id,Collage_name,Collage_code)VALUES('"+Username+"','"+Password+"','"+Emailid+"','"+collagename+"','"+collagecode+"')";
+					String qury="INSERT INTO login_details_of_collage (username,password,Email_id,Collage_name,Collage_code)VALUES('"+Username+"','"+Password+"','"+Emailid+"','"+collagename+"','"+collagecode+"')";
 					stmt.executeUpdate(qury);
 					
 					// inserting data into the sql
 					
-				          String sql = "select * from login_details_0f_collage"; 
+				          String sql = "select * from login_details_of_collage"; 
 				          // collecting login details from databases;
 						    
 							PreparedStatement ps = Connection.prepareStatement(sql); 
 							ResultSet rs = ps.executeQuery(); {
 
 						        while (rs.next()) {
-						        	System.out.println("___________________________");
+						        	System.out.println("__________________________");
 						        	String sqlusername=rs.getString("username");
 						          String sqlpassword=rs.getString("password");
 						          String sqlemailid=rs.getString("Email_id");

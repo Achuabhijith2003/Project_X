@@ -1,15 +1,19 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Home_page implements ActionListener {
 	
 	JFrame jf;
 	
 	JLabel welcome;
+	
+	JPanel wel;
 	
 	
 	Home_page(){
@@ -18,10 +22,8 @@ public class Home_page implements ActionListener {
 	    jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	    jf.setUndecorated(false);
 	    
-	    welcome= new JLabel("KMCT");
-	    welcome.setBounds(20, 10, 500, 900);
-	    welcome.setForeground(Color.red);
-	    jf.add(welcome);
+	
+	    
 	    
 	    
 	    jf.setVisible(true);

@@ -117,13 +117,13 @@ class forgot implements ActionListener {
 
 					// below two lines are used for connectivity.
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage", "root", "");
+					connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage","Project_x", "jayakumarreena");
 
 					// Collage is database
 					// root is name of database
 					// "" is password of database
 
-					String qury1 = "select*from login_details_0f_collage";
+					String qury1 = "select*from login_details_of_collage";
 
 					PreparedStatement ps = connection.prepareStatement(qury1);
 					ResultSet rs = ps.executeQuery();
@@ -170,7 +170,7 @@ class forgot implements ActionListener {
 
 				// below two lines are used for connectivity.
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage", "root", "");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/text_collage","Project_x", "jayakumarreena");
 
 				// Collage is database
 				// root is name of database
@@ -178,7 +178,7 @@ class forgot implements ActionListener {
 
 				if (Password.equals(Repassword)) {
 
-					String qury = "update login_details_0f_collage set password='" + Password + "' where Collage_code='"
+					String qury = "update login_details_of_collage set password='" + Password + "' where Collage_code='"
 							+ collagecode + "'";
 					Statement stmt = connection.createStatement();
 					stmt.executeUpdate(qury);

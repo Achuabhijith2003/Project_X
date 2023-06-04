@@ -97,7 +97,9 @@ public class Login_page implements ActionListener{
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/text_collage",
-					"root", "");
+					"Project_x", "jayakumarreena");
+				
+				System.out.println("Connected");
 
 				// Collage is database
 				// root is name of database
@@ -105,7 +107,7 @@ public class Login_page implements ActionListener{
 				
 				
 				
-				String qury1="select*from login_details_0f_collage";
+				String qury1="select*from login_details_of_collage where Username= '"+user_name+"'";
 						    
 				PreparedStatement ps = Connection.prepareStatement(qury1); 
 				ResultSet rs = ps.executeQuery(); {
