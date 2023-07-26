@@ -47,7 +47,7 @@ public class Login_page implements ActionListener{
 		    jf.add(Pass_word);
 		    
 		    
-		    password=new JPasswordField("text");
+		    password=new JPasswordField("123");
 		    password.setBounds(20, 70, 200, 20);
 		    jf.add(password);
 		    
@@ -99,7 +99,7 @@ public class Login_page implements ActionListener{
 					"jdbc:mysql://localhost:3306/text_collage",
 					"Project_x", "jayakumarreena");
 				
-				System.out.println("Connected");
+				System.out.println("-----------------Server Connected----------------");
 
 				// Collage is database
 				// root is name of database
@@ -113,7 +113,6 @@ public class Login_page implements ActionListener{
 				ResultSet rs = ps.executeQuery(); {
 
 			        while (rs.next()) {
-			        	System.out.println("___________________________");
 			         sqlpassword =rs.getString("password");
 			         sqlunsername=rs.getString("username");
 			          if (sqlpassword!=pass_word) {
@@ -123,6 +122,7 @@ public class Login_page implements ActionListener{
 			          
 			          System.out.println("___________________________");
 			          System.out.println("\nUsername: "+user_name+"\nsqlPassword: "+sqlpassword);
+			          System.out.println("Password:"+pass_word);
 			          System.out.println("___________________________");
 			           
 			          
@@ -148,10 +148,7 @@ public class Login_page implements ActionListener{
 			else if (go==true){
 				alert.setText("Username or password is incorrect ");
 			}
-			System.out.println("-----------------------------");
-			System.out.println("Username:"+user_name);
-			System.out.println("Password:"+pass_word);
-			System.out.println("Passwordsql:"+sqlpassword);
+			
 		}
 		else if  (e.getSource()==newuser) {
 			System.out.println("newuser button pressed");

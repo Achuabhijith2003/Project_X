@@ -138,7 +138,7 @@ class forgot implements ActionListener {
 							System.out.println("___________________________");
 							System.out.println("Username : "+sqlusername+"\nEmail: " + sqlemailid + "\nCollage code: " + sqlcollagecode);
 							System.out.println("___________________________");
-							if (emailid.equals(sqlemailid) && collagecode.equals(sqlcollagecode)) {
+							if (emailid.equals(sqlemailid) && collagecode.equals(sqlcollagecode) && username.equals(sqlusername)) {
 								password.setText("Enter new Password");
 								repassword.setText("Re Enter the Password");
 								this.username.setText("");
@@ -177,12 +177,13 @@ class forgot implements ActionListener {
 				// "" is password of database
 
 				if (Password.equals(Repassword)) {
-
+					
 					String qury = "update login_details_of_collage set password='" + Password + "' where Collage_code='"
 							+ collagecode + "'";
 					Statement stmt = connection.createStatement();
 					stmt.executeUpdate(qury);
-					new alert();
+					int num=1;
+					new alert(num);
 					jfforgot.setVisible(false);
 
 				} else {
@@ -207,19 +208,32 @@ class alert implements ActionListener {
 
 	JLabel message;
 
+	
 	Button go;
+	
 
-	alert() {
+	alert(int num) {
+		
 
 		jfalert = new JFrame("Update Sucessfully");
 		jfalert.setLayout(null);
 		jfalert.setSize(400, 150);
 		jfalert.setLocation(550, 200);
+		
+		if (num==1) {
+			message = new JLabel("Password Changed Sucessfully");
+			message.setBounds(100, 25, 200, 20);
+			message.setForeground(Color.green);
+			jfalert.add(message);
+		}
+		if(num==2) {
+			message = new JLabel("Account created Sucessfully");
+			message.setBounds(100, 25, 200, 20);
+			message.setForeground(Color.green);
+			jfalert.add(message);
+		}
 
-		message = new JLabel("Password Changed Sucessfully");
-		message.setBounds(100, 25, 200, 20);
-		message.setForeground(Color.green);
-		jfalert.add(message);
+		
 
 		go = new Button("Go to login page");
 		go.setBounds(120, 50, 125, 20);
@@ -233,8 +247,9 @@ class alert implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == go) {
+				jfalert.setVisible(false);
 			new Login_page();
-			jfalert.setVisible(false);
+			
 		}
 
 	}

@@ -184,7 +184,8 @@ import javax.swing.JPasswordField;
 						          String sqlcollagecode=rs.getString("collage_code");
 				         System.out.println("Insert data into the database");  
 				         System.out.println("Username : "+sqlusername+"\nPassword : "+sqlpassword+"\nEmail ID : "+sqlemailid+"\nCollage Name : "+sqlcollagename+"\nCollage Code : "+sqlcollagecode);
-				         new alertbox();
+				        int num=2;
+				         new alert(num);
 				         jfnewuser.setVisible(false);
 						        }
 							}
@@ -200,48 +201,8 @@ import javax.swing.JPasswordField;
 		}
 		
 	}
- 
- 
-class alertbox implements ActionListener{
-	
-	JFrame jfalert;
-
-	JLabel message;
-
-	Button go;
-
-	public alertbox() {
-
-		jfalert = new JFrame("Update Sucessfully");
-		jfalert.setLayout(null);
-		jfalert.setSize(400, 150);
-		jfalert.setLocation(550, 200);
-
-		message = new JLabel("Account created Sucessfully");
-		message.setBounds(100, 25, 200, 20);
-		message.setForeground(Color.green);
-		jfalert.add(message);
-
-		go = new Button("Go to login page");
-		go.setBounds(120, 50, 125, 20);
-		go.addActionListener(this);
-		jfalert.add(go);
-
-		jfalert.setVisible(true);
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == go) {
-			new Login_page();
-			jfalert.setVisible(false);
-		}
-
-	}
-	
-}
  }
-
+ 
+ 
 
 
